@@ -11,9 +11,11 @@ def get_index():
 
 @api.route('/on', methods=['GET'])
 def get_on():
+  os.environ['TSTATUS']="130"
   return render_template('index.html', pos="130")
 
 @api.route('/off', methods=['GET'])
+os.environ['TSTATUS']="90"
 def get_off():
   return render_template('index.html', pos="90")
 
