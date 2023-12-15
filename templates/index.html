@@ -133,12 +133,12 @@
 
         };
 
-        xhttp.open("GET", "/companies", true);
-
+        if(pos==90)
+          xhttp.open("GET", "/off", true);
+        else if(pos==130)
+          xhttp.open("GET", "/on", true);
+        
         xhttp.send();
-        
-
-        
 
       } 
 
