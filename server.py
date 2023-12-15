@@ -1,6 +1,6 @@
 from flask import Flask, json, render_template
 
-companies = [{"id": 1, "name": "Company One"}, {"id": 2, "name": "Company Two"}]
+
 
 api = Flask(__name__)
 
@@ -8,9 +8,13 @@ api = Flask(__name__)
 def get_index():
   return render_template('index.html')
 
-@api.route('/companies', methods=['GET'])
-def get_companies():
-  return json.dumps(companies)
+@api.route('/on', methods=['GET'])
+def get_on():
+  return render_template('index.html', pos="130")
+
+@api.route('/off', methods=['GET'])
+def get_off():
+  return render_template('index.html', pos="90")
 
 if __name__ == '__main__':
     api.run(port=5000, host='0.0.0.0')

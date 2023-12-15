@@ -100,13 +100,13 @@
 
 
     <h1>Thermostat remote controller</h1>
-    <h2>by Fabrizio Rastiello</h2>
+    <h2>by Fabrizio Rastiello {{pos}}</h2>
 
     <br><br>
 
     <div class="slidecontainer">
 
-      <input type="range" min="0" max="180" value="90" class="slider" id="myRange"  >
+      <input type="range" min="0" max="180" value="{{pos}}" class="slider" id="myRange"  >
 
       <p>Servo angle: <span id="demo"></span></p>
 
@@ -146,7 +146,7 @@
       var offbutton = document.getElementById("offButton");
       var onbutton = document.getElementById("onButton");
  
-      
+
 
       
       var output = document.getElementById("demo");
