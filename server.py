@@ -5,7 +5,7 @@ companies = [{"id": 1, "name": "Company One"}, {"id": 2, "name": "Company Two"}]
 api = Flask(__name__)
 
 @api.route('/', methods=['GET'])
-def get_companies():
+def get_index():
   return render_template('index.html')
 
 @api.route('/companies', methods=['GET'])
