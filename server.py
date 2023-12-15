@@ -1,12 +1,13 @@
 from flask import Flask, json, render_template
-
+import os
 
 
 api = Flask(__name__)
 
 @api.route('/', methods=['GET'])
 def get_index():
-  return render_template('index.html')
+  status= os.getenv("TSTATUS")
+  return render_template('index.html', pos=status)
 
 @api.route('/on', methods=['GET'])
 def get_on():
