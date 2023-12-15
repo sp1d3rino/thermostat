@@ -15,8 +15,8 @@ def get_on():
   return render_template('index.html', pos="130")
 
 @api.route('/off', methods=['GET'])
-os.environ['TSTATUS']="90"
 def get_off():
+  os.environ['TSTATUS']="90"
   return render_template('index.html', pos="90")
 
 if __name__ == '__main__':
