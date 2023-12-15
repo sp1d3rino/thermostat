@@ -1,16 +1,13 @@
-import http.server
-import socketserver
- 
+from flask import Flask, json
 
- 
-PORT = 8000
-DIRECTORY = "/home/spi/"
- 
-Handler = http.server.SimpleHTTPRequestHandler
-Handler.directory = DIRECTORY
-Handler.extensions_map[".html"] = "text/html"
- 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("Server started at localhost:" + str(PORT))
-    httpd.serve_forever()
+companies = [{"id": 1, "name": "Company One"}, {"id": 2, "name": "Company Two"}]
+
+api = Flask(__name__)
+
+@api.route('/companies', methods=['GET'])
+def get_companies():
+  return json.dumps(companies)
+
+if __name__ == '__main__':
+    api.run()
     

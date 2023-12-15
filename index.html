@@ -119,7 +119,7 @@
     <script>
 
       function sendData(pos) {
-
+      
         var xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function() {
@@ -135,6 +135,9 @@
         xhttp.open("GET", "setPOS?servoPOS="+pos, true);
 
         xhttp.send();
+        
+
+        
 
       } 
 
