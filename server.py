@@ -21,7 +21,7 @@ def log(value):
   file1 = open("history", "a")  # append mode
   ct = datetime.datetime.now()
   time_str =str(ct) 
-  file1.write(time_str+" position:"+value+ " \n")
+  file1.write(time_str+" state: "+value+ " \n")
   file1.close()
 
 # frontend
