@@ -16,13 +16,6 @@ def read_status():
   return status
 
 
-def updateButton():
-  status=read_status()
-  if status=="off":
-    return ""
-  else:
-    return "checked"
-
 def log(value):
    # Append-adds at last
   file1 = open("history", "a")  # append mode
@@ -34,13 +27,14 @@ def log(value):
 # frontend
 @api.route('/', methods=['GET'])
 def get_index():
-  status=read_status()
-  icon_path=updateButton()
-  return render_template('index.html', pos=status, button_image=icon_path)
+  if (read_status()=="on"):
+    status="checked"
+  else:
+    status=""
+  return render_template('index.html', ischecked=status)
 
 
 # APIs
-
 @api.route('/status', methods=['GET'])
 def get_status():
   return read_status()
@@ -50,15 +44,13 @@ def get_status():
 def get_on():
   write_status("on")
   log("on")
-  icon_path=updateButton()
-  return render_template('index.html', pos="on", button_image=icon_path)
+  return render_template('index.html', ischecked="checked" )
 
 @api.route('/off', methods=['GET'])
 def get_off():
   write_status("off")
   log("off")
-  icon_path=updateButton()
-  return render_template('index.html', pos="off", button_image=icon_path)
+  return render_template('index.html',ischecked="")
 
 if __name__ == '__main__':
     api.run(port=8088, host='0.0.0.0')
