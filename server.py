@@ -33,9 +33,8 @@ def get_index():
 # APIs
 
 @api.route('/status', methods=['GET'])
-def get_on():
-  status=read_status()
-  return render_template('index.html', pos="130")
+def get_status():
+  return read_status()
 
 
 @api.route('/on', methods=['GET'])
