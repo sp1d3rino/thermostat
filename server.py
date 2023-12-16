@@ -18,7 +18,7 @@ def read_status():
 
 def updateButton():
   status=read_status()
-  if status==90:
+  if status=="90":
     return "static/images/button_off.png"
   else:
     return "static/images/button_on.png"
