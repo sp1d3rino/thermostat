@@ -34,7 +34,7 @@ def log(value):
 @api.route('/', methods=['GET'])
 def get_index():
   status=read_status()
-  icon_path="images/button_off.png"
+  icon_path="static/images/button_off.png"
   return render_template('index.html', pos=status, button_image=icon_path)
 
 
