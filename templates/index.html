@@ -120,9 +120,10 @@
 
 
       toggleButton.onclick = function (){
-        output.innerHTML = 90;
-        sendData(output.innerHTML);
-      
+        if (checkBox.checked == true)
+          sendData("on");
+        else
+          sendData("off");
       }
  
  
