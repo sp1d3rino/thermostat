@@ -1,8 +1,16 @@
 from flask import Flask, json, render_template
 import os
+import datetime
 
 
 api = Flask(__name__)
+
+def log(value):
+   # Append-adds at last
+  file1 = open("history", "a")  # append mode
+  ct = datetime.datetime.now()
+  file1.write(ct+" position:"+value+ " \n")
+  file1.close()
 
 @api.route('/', methods=['GET'])
 def get_index():
@@ -12,10 +20,12 @@ def get_index():
 @api.route('/on', methods=['GET'])
 def get_on():
   os.environ['TSTATUS']="130"
+  log("130")
   return render_template('index.html', pos="130")
 
 @api.route('/off', methods=['GET'])
 def get_off():
+  log("90")
   os.environ['TSTATUS']="90"
   return render_template('index.html', pos="90")
 
