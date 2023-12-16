@@ -9,7 +9,8 @@ def log(value):
    # Append-adds at last
   file1 = open("history", "a")  # append mode
   ct = datetime.datetime.now()
-  file1.write(ct+" position:"+value+ " \n")
+  time_str = datetime.strptime(str(ct), '%Y-%m-%d %H:%M:%S') 
+  file1.write(time_str+" position:"+value+ " \n")
   file1.close()
 
 @api.route('/', methods=['GET'])
