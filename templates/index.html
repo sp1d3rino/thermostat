@@ -136,12 +136,13 @@
         };
 
         if(pos==90)
-          xhttp.open("POST", "/off", true);
+          xhttp.open("GET", "/off", true);
         else if(pos==130)
-          xhttp.open("POST", "/on", true);
+          xhttp.open("GET", "/on", true);
+
         
         xhttp.send();
-
+        window.location.reload();
       } 
 
       var slider = document.getElementById("myRange");

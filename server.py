@@ -46,14 +46,14 @@ def get_status():
   return read_status()
 
 
-@api.route('/on', methods=['POST'])
+@api.route('/on', methods=['GET'])
 def get_on():
   write_status("130")
   log("130")
   icon_path=updateButton()
   return render_template('index.html', pos="130", button_image=icon_path)
 
-@api.route('/off', methods=['POST'])
+@api.route('/off', methods=['GET'])
 def get_off():
   write_status("90")
   log("90")
