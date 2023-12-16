@@ -106,13 +106,9 @@
     <div>
       <img src="{{button_image}}"/> 
     </div>
-    <div class="slidecontainer">
-
-      <input type="range" min="0" max="180" value="{{pos}}" class="slider" id="myRange"  >
-
+ 
       <p>Servo angle: <span id="demo"></span></p>
-
-    </div>
+ 
     <div>
  
       <input type="button" value="Turn off" id="offButton">
@@ -145,7 +141,7 @@
         window.location.reload();
       } 
 
-      var slider = document.getElementById("myRange");
+       
       var offbutton = document.getElementById("offButton");
       var onbutton = document.getElementById("onButton");
  
@@ -156,15 +152,7 @@
 
       output.innerHTML = slider.value;
 
-
-      slider.oninput = function() {
-
-        output.innerHTML = this.value;
-
-        sendData(output.innerHTML);
-
-      }
-
+ 
       offbutton.onclick = function (){
         output.innerHTML = 90;
         slider.value = 90;
