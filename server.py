@@ -10,6 +10,11 @@ def write_status(value):
   f.write(value)
   f.close()
 
+def read_status():
+  f = open("tstatus.txt", "r")
+  status= f.read()
+  return status
+
 def log(value):
    # Append-adds at last
   file1 = open("history", "a")  # append mode
@@ -18,11 +23,20 @@ def log(value):
   file1.write(time_str+" position:"+value+ " \n")
   file1.close()
 
+# frontend
 @api.route('/', methods=['GET'])
 def get_index():
-  f = open("tstatus.txt", "r")
-  status= f.read()
+  status=read_status()
   return render_template('index.html', pos=status)
+
+
+# APIs
+
+@api.route('/status', methods=['GET'])
+def get_on():
+  status=read_status()
+  return render_template('index.html', pos="130")
+
 
 @api.route('/on', methods=['GET'])
 def get_on():
