@@ -15,6 +15,13 @@ def read_status():
   status= f.read()
   return status
 
+def updateButton():
+  status=read_status()
+  if status==90:
+    return "images/button_off.png"
+  else:
+    return "images/button_on.png"
+
 def log(value):
    # Append-adds at last
   file1 = open("history", "a")  # append mode
@@ -27,7 +34,8 @@ def log(value):
 @api.route('/', methods=['GET'])
 def get_index():
   status=read_status()
-  return render_template('index.html', pos=status)
+  icon_path=updateButton()
+  return render_template('index.html', pos=status, button_image=icon_path)
 
 
 # APIs
@@ -41,14 +49,15 @@ def get_status():
 def get_on():
   write_status("130")
   log("130")
-  return render_template('index.html', pos="130")
+  icon_path=updateButton()
+  return render_template('index.html', pos="130", button_image=icon_path)
 
 @api.route('/off', methods=['GET'])
 def get_off():
   write_status("90")
   log("90")
-  os.environ['TSTATUS']="90"
-  return render_template('index.html', pos="90")
+  icon_path=updateButton()
+  return render_template('index.html', pos="90", button_image=icon_path)
 
 if __name__ == '__main__':
     api.run(port=8088, host='0.0.0.0')
