@@ -69,15 +69,9 @@
       </style>
 
   </head>
-
   <body>
-
-
     <h1>Thermostat remote controller</h1>
     <h2>by Fabrizio Rastiello</h2>
-
- 
- 
     <div>
       <label class="switch">
         <input type="checkbox" checked id="toggleButton">
@@ -108,16 +102,12 @@
 
         
         xhttp.send();
-        //window.location.reload();
       } 
 
   
       var toggleButton =document.getElementById("toggleButton");
-
-
       
       var output = document.getElementById("demo");
-
 
       toggleButton.onclick = function (){
         if (toggleButton.checked == true)
@@ -126,13 +116,6 @@
           sendData("off");
       }
  
- 
-
     </script>
-
-
-
-
   </body>
-
 </html>
