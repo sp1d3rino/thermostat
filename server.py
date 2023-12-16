@@ -38,5 +38,5 @@ def get_off():
   return render_template('index.html', pos="90")
 
 if __name__ == '__main__':
-    api.run(port=5000, host='0.0.0.0')
+    api.run(port=8088, host='0.0.0.0')
     
