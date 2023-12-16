@@ -45,11 +45,11 @@
       }
       
       input:checked + .slider {
-        background-color: #2196F3;
+        background-color: #ff003c;
       }
       
       input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
+        box-shadow: 0 0 1px #ff003c;
       }
       
       input:checked + .slider:before {
@@ -80,35 +80,30 @@
     </div>
 
     <script>
-
       function sendData(pos) {
-      
         var xhttp = new XMLHttpRequest();
-
         xhttp.onreadystatechange = function() {
-
           if (this.readyState == 4 && this.status == 200) {
-
             console.log(this.responseText);
-
           }
-
         };
 
         if(pos=="off")
           xhttp.open("GET", "/off", true);
-        else if(pos=="on")
+        else
           xhttp.open("GET", "/on", true);
-
-        
         xhttp.send();
       } 
 
   
       var toggleButton =document.getElementById("toggleButton");
       
+<<<<<<< HEAD
       var output = document.getElementById("demo");
 
+=======
+ 
+>>>>>>> f0089a3 (red)
       toggleButton.onclick = function (){
         if (toggleButton.checked == true)
           sendData("on");
