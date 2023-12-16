@@ -18,10 +18,10 @@ def read_status():
 
 def updateButton():
   status=read_status()
-  if status=="90":
-    return "static/images/button_off.png"
+  if status=="off":
+    return ""
   else:
-    return "static/images/button_on.png"
+    return "checked"
 
 def log(value):
    # Append-adds at last
@@ -48,17 +48,17 @@ def get_status():
 
 @api.route('/on', methods=['GET'])
 def get_on():
-  write_status("130")
-  log("130")
+  write_status("on")
+  log("on")
   icon_path=updateButton()
-  return render_template('index.html', pos="130", button_image=icon_path)
+  return render_template('index.html', pos="on", button_image=icon_path)
 
 @api.route('/off', methods=['GET'])
 def get_off():
-  write_status("90")
-  log("90")
+  write_status("off")
+  log("off")
   icon_path=updateButton()
-  return render_template('index.html', pos="90", button_image=icon_path)
+  return render_template('index.html', pos="off", button_image=icon_path)
 
 if __name__ == '__main__':
     api.run(port=8088, host='0.0.0.0')

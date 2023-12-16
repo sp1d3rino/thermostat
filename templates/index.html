@@ -76,21 +76,13 @@
     <h1>Thermostat remote controller</h1>
     <h2>by Fabrizio Rastiello</h2>
 
-    <br><br>
-    <div>
-      <img src="{{button_image}}"/> 
-    </div>
  
-      <p>Servo angle: <span id="demo"></span></p>
-
  
     <div>
       <label class="switch">
-        <input type="checkbox" checked>
+        <input type="checkbox" checked id="toggleButton">
         <span class="slider round"></span>
       </label>
-      <input type="button" value="Turn off" id="offButton">
-      <input type="button" value="Turn on" id="onButton">
     </div>
 
     <script>
@@ -109,39 +101,31 @@
 
         };
 
-        if(pos==90)
+        if(pos=="off")
           xhttp.open("GET", "/off", true);
-        else if(pos==130)
+        else if(pos=="on")
           xhttp.open("GET", "/on", true);
 
         
         xhttp.send();
-        window.location.reload();
+        //window.location.reload();
       } 
 
-       
-      var offbutton = document.getElementById("offButton");
-      var onbutton = document.getElementById("onButton");
- 
+  
+      var toggleButton =document.getElementById("toggleButton");
 
 
       
       var output = document.getElementById("demo");
 
 
-
- 
-      offbutton.onclick = function (){
+      toggleButton.onclick = function (){
         output.innerHTML = 90;
         sendData(output.innerHTML);
       
       }
-
-      onbutton.onclick = function (){
-        output.innerHTML = 130;
-        sendData(output.innerHTML);
-      
-      }
+ 
+ 
 
     </script>
 
