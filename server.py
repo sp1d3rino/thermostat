@@ -41,7 +41,8 @@ def get_index():
 @api.route('/guide', methods=["POST"])
 def set_temp():
     temp = request.json['temp']
-    return "200"
+    
+    return render_template('index.html', temp=temp)
 
 # API thermostat
 @api.route('/status', methods=['GET'])
