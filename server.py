@@ -18,12 +18,20 @@ def fread(filename):
   except IOError:
       return ''
 
-def log(value):
+def logState(value):
    # Append-adds at last
-  file1 = open("history", "a")  # append mode
+  file1 = open("state-history", "a")  # append mode
   ct = datetime.datetime.now()
   time_str =str(ct) 
   file1.write(time_str+" state: "+value+ " \n")
+  file1.close()
+
+def logTemp(value):
+   # Append-adds at last
+  file1 = open("temp-history", "a")  # append mode
+  ct = datetime.datetime.now()
+  time_str =str(ct) 
+  file1.write(time_str+" temp: "+value+ " \n")
   file1.close()
 
 # frontend
@@ -43,6 +51,7 @@ def get_index():
 @api.route('/temp', methods=["POST"])
 def set_temp():
     temperature = request.json['temp']
+    logTemp(temperature)
     fwrite("temp.txt",temperature)
     return fread("tstatus.txt")
 
@@ -55,14 +64,14 @@ def get_status():
 @api.route('/on', methods=['GET'])
 def get_on():
   fwrite("tstatus.txt","on")
-  log("on")
+  logState("on")
   return render_template('index.html', ischecked="checked" )
 
 # API thermostat
 @api.route('/off', methods=['GET'])
 def get_off():
   fwrite("tstatus.txt","off")
-  log("off")
+  logState("off")
   return render_template('index.html',ischecked="")
 
 if __name__ == '__main__':
