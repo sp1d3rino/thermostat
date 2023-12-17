@@ -5,14 +5,13 @@ import datetime
 
 api = Flask(__name__)
 
-temperature="1"
-def write_status(value):
-  f = open("tstatus.txt", "w")
+def fwrite(filename,value):
+  f = open(filename, "w")
   f.write(value)
   f.close()
 
-def read_status():
-  f = open("tstatus.txt", "r")
+def fread(filename):
+  f = open(filename, "r")
   status= f.read()
   return status
 
@@ -28,11 +27,11 @@ def log(value):
 # frontend
 @api.route('/', methods=['GET'])
 def get_index():
-  if (read_status()=="on"):
+  if (fread("tstatus.txt")=="on"):
     status="checked"
   else:
     status=""
-  return render_template('index.html', ischecked=status,temp=temperature)
+  return render_template('index.html', ischecked=status,temp=fread("temp.txt"))
 
 
 # APIs
@@ -42,24 +41,25 @@ def get_index():
 @api.route('/temp', methods=["POST"])
 def set_temp():
     temperature = request.json['temp']
+    fwrite("temp.txt",temperature)
     return temperature
 
 # API thermostat
 @api.route('/status', methods=['GET'])
 def get_status():
-  return read_status()
+  return fread("tstatus.txt")
 
 # API thermostat
 @api.route('/on', methods=['GET'])
 def get_on():
-  write_status("on")
+  fwrite("tstatus.txt","on")
   log("on")
   return render_template('index.html', ischecked="checked" )
 
 # API thermostat
 @api.route('/off', methods=['GET'])
 def get_off():
-  write_status("off")
+  fwrite("tstatus.txt","off")
   log("off")
   return render_template('index.html',ischecked="")
 
