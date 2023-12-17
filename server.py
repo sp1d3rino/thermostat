@@ -5,6 +5,7 @@ import datetime
 
 api = Flask(__name__)
 
+temperature=""
 def write_status(value):
   f = open("tstatus.txt", "w")
   f.write(value)
@@ -31,7 +32,7 @@ def get_index():
     status="checked"
   else:
     status=""
-  return render_template('index.html', ischecked=status,temp=temp)
+  return render_template('index.html', ischecked=status,temp=temperature)
 
 
 # APIs
@@ -40,8 +41,8 @@ def get_index():
 # API temperature
 @api.route('/temp', methods=["POST"])
 def set_temp():
-    temp = request.json['temp']
-    return temp
+    temperature = request.json['temp']
+    return temperature
 
 # API thermostat
 @api.route('/status', methods=['GET'])
