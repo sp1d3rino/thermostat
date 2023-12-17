@@ -5,7 +5,7 @@ import datetime
 
 api = Flask(__name__)
 
-temperature=""
+temperature="1"
 def write_status(value):
   f = open("tstatus.txt", "w")
   f.write(value)
