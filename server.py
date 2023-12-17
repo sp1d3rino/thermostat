@@ -1,4 +1,4 @@
-from flask import Flask, json, render_template
+from flask import Flask, json, render_template, request
 import os
 import datetime
 
@@ -35,17 +35,30 @@ def get_index():
 
 
 # APIs
+
+
+# API temperature
+@api.route('/guide', methods=["POST"])
+def set_temp():
+    temp = request.json['temp']
+
 @api.route('/status', methods=['GET'])
 def get_status():
   return read_status()
 
+# API thermostat
+@api.route('/status', methods=['GET'])
+def get_status():
+  return read_status()
 
+# API thermostat
 @api.route('/on', methods=['GET'])
 def get_on():
   write_status("on")
   log("on")
   return render_template('index.html', ischecked="checked" )
 
+# API thermostat
 @api.route('/off', methods=['GET'])
 def get_off():
   write_status("off")
