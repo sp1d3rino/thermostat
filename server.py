@@ -11,10 +11,12 @@ def fwrite(filename,value):
   f.close()
 
 def fread(filename):
-  f = open(filename, "r")
-  status= f.read()
-  return status
-
+  try:
+    f = open(filename, "r")
+    status= f.read()
+    return status
+  except IOError:
+      return ''
 
 def log(value):
    # Append-adds at last
