@@ -42,10 +42,6 @@ def get_index():
 def set_temp():
     temp = request.json['temp']
 
-@api.route('/status', methods=['GET'])
-def get_status():
-  return read_status()
-
 # API thermostat
 @api.route('/status', methods=['GET'])
 def get_status():
