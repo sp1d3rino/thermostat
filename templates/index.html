@@ -70,15 +70,16 @@
 
   </head>
   <body>
-    <h1>Thermostat remote controller</h1>
-    <h2>by Fabrizio Rastiello</h2>
-    <div>
-      <label class="switch">
-        <input type="checkbox" {{ischecked}} id="toggleButton">
-        <span class="slider round"></span>
-      </label>
-    </div>
-
+    <center>
+      <h1>Thermostat remote controller</h1>
+  
+      <div>
+        <label class="switch">
+          <input type="checkbox" {{ischecked}} id="toggleButton">
+          <span class="slider round"></span>
+        </label>
+      </div>
+</center>
     <script>
       function sendData(pos) {
         var xhttp = new XMLHttpRequest();
