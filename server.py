@@ -31,18 +31,17 @@ def get_index():
     status="checked"
   else:
     status=""
-  return render_template('index.html', ischecked=status)
+  return render_template('index.html', ischecked=status,temp=temp)
 
 
 # APIs
 
 
 # API temperature
-@api.route('/guide', methods=["POST"])
+@api.route('/temp', methods=["POST"])
 def set_temp():
     temp = request.json['temp']
-    
-    return render_template('index.html', temp=temp)
+    return temp
 
 # API thermostat
 @api.route('/status', methods=['GET'])
