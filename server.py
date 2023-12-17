@@ -44,7 +44,7 @@ def get_index():
 def set_temp():
     temperature = request.json['temp']
     fwrite("temp.txt",temperature)
-    return temperature
+    return fread("tstatus.txt")
 
 # API thermostat
 @api.route('/status', methods=['GET'])
