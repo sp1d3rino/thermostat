@@ -3,7 +3,7 @@
 <html>
 
   <head>
-
+    <title>TRC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
@@ -72,15 +72,31 @@
   <body>
     <center>
       <h1>Thermostat remote controller</h1>
-  
       <div>
-        <label class="switch">
-          <input type="checkbox" {{ischecked}} id="toggleButton">
-          <span class="slider round"></span>
-        </label>
+
+        <table>
+          <tbody>
+          <tr>
+          <td style="text-align: center;">
+            <img src="static/images/therm.png"/>
+          </td>
+          <td style="text-align: center;">
+            <label class="switch">
+              <input type="checkbox" {{ischecked}} id="toggleButton">
+              <span class="slider round"></span>
+            </label>
+          </td>
+          </tr>
+          <tr>
+          <td style="text-align: center;">asdasdasd</td>
+          <td style="text-align: center;">sadsdsdsdsdsdsd</td>
+          </tr>
+          </tbody>
+          </table>
+        
         <h5>The temperature is {{temp}} °C</h5>
       </div>
-</center>
+    </center>
     <script>
       function sendData(pos) {
         var xhttp = new XMLHttpRequest();
