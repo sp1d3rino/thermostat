@@ -50,6 +50,9 @@ def get_index():
 # API temperature
 @api.route('/temp', methods=["POST"])
 def set_temp():
+    # read token
+    if (request.headers.get('token')!=fread("token.key")):
+      return("Invalid token!");
     temperature = request.json['temp']
     logTemp(temperature)
     fwrite("temp.txt",temperature)
