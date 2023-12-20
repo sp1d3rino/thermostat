@@ -51,7 +51,7 @@ def get_index():
 @api.route('/temp', methods=["POST"])
 def set_temp():
     # read token
-    if (request.headers.get('token')!=fread("token.key")):
+    if (request.headers.get('Authorization')!=fread("token.key")):
       return("Invalid token!");
     temperature = request.json['temp']
     logTemp(temperature)
