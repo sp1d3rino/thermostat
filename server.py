@@ -51,9 +51,6 @@ def get_index():
 @api.route('/temp', methods=["POST"])
 def set_temp():
     # read token
-    print("remote token:" + request.headers.get('Authorization')+"\n");
-    print("local token:" + fread("token.key")+"\n");
-
     if (request.headers.get('Authorization')!=fread("token.key").strip()):
       return("Invalid token!");
     temperature = request.json['temp']
@@ -69,6 +66,9 @@ def get_status():
 # API thermostat
 @api.route('/on', methods=['GET'])
 def get_on():
+  # read token
+  if (request.headers.get('Authorization')!=fread("token.key").strip()):
+    return("Invalid token!");  
   fwrite("tstatus.txt","on")
   logState("on")
   return render_template('index.html', ischecked="checked" )
@@ -76,6 +76,9 @@ def get_on():
 # API thermostat
 @api.route('/off', methods=['GET'])
 def get_off():
+  # read token
+  if (request.headers.get('Authorization')!=fread("token.key").strip()):
+    return("Invalid token!");  
   fwrite("tstatus.txt","off")
   logState("off")
   return render_template('index.html',ischecked="")

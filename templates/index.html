@@ -73,7 +73,7 @@
     <center>
       <h1>Thermostat remote controller</h1>
       <div>
-
+        <input type="text" id="token" name="token"><br>
         <table>
           <tbody>
           <tr>
@@ -101,6 +101,7 @@
     <script>
       function sendData(pos) {
         var xhttp = new XMLHttpRequest();
+        xhttp.setRequestHeader("Authorization", document.getElementById("token").id);
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
