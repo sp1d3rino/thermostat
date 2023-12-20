@@ -51,6 +51,9 @@ def get_index():
 @api.route('/temp', methods=["POST"])
 def set_temp():
     # read token
+    print("remote token:" + request.headers.get('Authorization')+"\n");
+    print("local token:" + fread("token.key")+"\n");
+
     if (request.headers.get('Authorization')!=fread("token.key")):
       return("Invalid token!");
     temperature = request.json['temp']
