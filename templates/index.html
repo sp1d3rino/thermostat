@@ -111,7 +111,7 @@
           xhttp.open("GET", "/off", true);
         else
           xhttp.open("GET", "/on", true);
-        xhttp.setRequestHeader("Authorization", document.getElementById("token").id);
+        xhttp.setRequestHeader("Authorization", document.getElementById("token").value);
         xhttp.send();
       } 
 
