@@ -54,7 +54,7 @@ def set_temp():
     print("remote token:" + request.headers.get('Authorization')+"\n");
     print("local token:" + fread("token.key")+"\n");
 
-    if (request.headers.get('Authorization')!=fread("token.key")):
+    if (request.headers.get('Authorization')!=fread("token.key").strip()):
       return("Invalid token!");
     temperature = request.json['temp']
     logTemp(temperature)
