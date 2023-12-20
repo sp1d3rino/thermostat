@@ -101,7 +101,6 @@
     <script>
       function sendData(pos) {
         var xhttp = new XMLHttpRequest();
-        xhttp.setRequestHeader("Authorization", document.getElementById("token").id);
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
@@ -112,6 +111,7 @@
           xhttp.open("GET", "/off", true);
         else
           xhttp.open("GET", "/on", true);
+        xhttp.setRequestHeader("Authorization", document.getElementById("token").id);
         xhttp.send();
       } 
 
