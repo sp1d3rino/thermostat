@@ -2,6 +2,7 @@ from flask import Flask, json, render_template, request
 import os
 import datetime
 
+HTTP_OK = "200";
 
 api = Flask(__name__)
 
@@ -34,7 +35,8 @@ def logTemp(value):
   file1.write(time_str+" temp: "+value+ " \n")
   file1.close()
 
-# frontend
+# frontend 
+# returns the index.html webpage
 @api.route('/', methods=['GET'])
 def get_index():
   if (fread("tstatus.txt")=="on"):
@@ -48,6 +50,8 @@ def get_index():
 
 
 # API temperature
+# this API is used by ESP8266 to send temperature and 
+# receive last thermostat status saved on the server 
 @api.route('/temp', methods=["POST"])
 def set_temp():
     # read token
@@ -59,11 +63,15 @@ def set_temp():
     return fread("tstatus.txt")
 
 # API thermostat
+# for any endpoints that want to know 
+# what is the latest saved state
 @api.route('/status', methods=['GET'])
 def get_status():
   return fread("tstatus.txt")
 
+
 # API thermostat
+# to set ON therm status on server
 @api.route('/on', methods=['GET'])
 def get_on():
   # read token
@@ -71,9 +79,11 @@ def get_on():
     return("Invalid token!");  
   fwrite("tstatus.txt","on")
   logState("on")
-  return render_template('index.html', ischecked="checked" )
+  #return render_template('index.html', ischecked="checked" )
+  return HTTP_OK;
 
 # API thermostat
+# to set OFF therm status on server
 @api.route('/off', methods=['GET'])
 def get_off():
   # read token
@@ -81,7 +91,14 @@ def get_off():
     return("Invalid token!");  
   fwrite("tstatus.txt","off")
   logState("off")
-  return render_template('index.html',ischecked="")
+  #return render_template('index.html',ischecked="")
+  return HTTP_OK;
+
+# API thermostat
+# to get temp (e.g. called by mobile app)
+@api.route('/gettemp', methods=['GET'])
+def get_status():
+  return fread("temp.txt")
 
 if __name__ == '__main__':
     api.run(port=8088, host='0.0.0.0')
