@@ -96,7 +96,7 @@ def get_off():
 
 # API thermostat
 # to get temp (e.g. called by mobile app)
-@api.route('/gettemp', methods=['GET'])
+@api.route('/temp', methods=['GET'])
 def get_temp():
   return fread("temp.txt")
 
