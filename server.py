@@ -100,6 +100,6 @@ def get_off():
 def get_temp():
   return fread("temp.txt")
 
-if __name__ == '__main__':
-    api.run(port=8088, host='0.0.0.0')
+if __name__ == '__main__':    
+    api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
     
