@@ -1,6 +1,7 @@
 from flask import Flask, json, render_template, request
 import os
 import datetime
+import subprocess
 
 HTTP_OK = "200";
 
@@ -99,6 +100,12 @@ def get_off():
 @api.route('/temp', methods=['GET'])
 def get_temp():
   return fread("temp.txt")
+
+# API thermostat
+# to get min temp (e.g. called by mobile app)
+@api.route('/lowertemp', methods=['GET'])
+def get_lower_temp():
+  return subprocess.call(['sh', './getmin.sh'])
 
 if __name__ == '__main__':    
    #api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
