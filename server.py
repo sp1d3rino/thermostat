@@ -105,7 +105,7 @@ def get_temp():
 # to get min temp (e.g. called by mobile app)
 @api.route('/lowertemp', methods=['GET'])
 def get_lower_temp():
-  return subprocess.call(['sh', './getmin.sh'])
+  return subprocess.call(['sh', './scripts/getmin.sh'])
 
 if __name__ == '__main__':    
    #api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
