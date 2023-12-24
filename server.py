@@ -38,7 +38,8 @@ def logTemp(value):
 
 def saveAvgTemp(ctemp):
   f = open("tempavg", "r")
-  line= f.read()
+  row= f.read()
+  line= row.split() 
   sum = float(line[0])
   count = float(line[1])  
   sum = sum + float(ctemp)
