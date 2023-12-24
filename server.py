@@ -36,6 +36,21 @@ def logTemp(value):
   file1.write(time_str+" temp: "+value+ " \n")
   file1.close()
 
+def saveAvgTemp(ctemp):
+  f = open("tempavg", "r")
+  line= f.read()
+  sum = float(line[0])
+  count = float(line[1])  
+  sum = sum + float(ctemp)
+  count = count +1
+  avg = sum / count
+  
+  file1 = open("tempavg", "w")  # append mode
+  file1.write(sum +" "+count+" "+ avg)
+  file1.close()
+
+
+
 # frontend 
 # returns the index.html webpage
 @api.route('/', methods=['GET'])
@@ -61,6 +76,7 @@ def set_temp():
     temperature = request.json['temp']
     logTemp(temperature)
     fwrite("temp.txt",temperature)
+    saveAvgTemp(temperature)
     return fread("tstatus.txt")
 
 # API thermostat
