@@ -110,6 +110,24 @@ def get_lower_temp():
   print(stdout)
   return stdout
 
+# API thermostat
+# to get max temp (e.g. called by mobile app)
+@api.route('/highertemp', methods=['GET'])
+def get_higher_temp():
+  process = subprocess.Popen(['./scripts/getmax.sh'], stdout=subprocess.PIPE)
+  stdout = process.communicate()[0]
+  print(stdout)
+  return stdout
+
+# API thermostat
+# to get mean temp (e.g. called by mobile app)
+@api.route('/avgtemp', methods=['GET'])
+def get_avg_temp():
+  process = subprocess.Popen(['./scripts/getavg.sh'], stdout=subprocess.PIPE)
+  stdout = process.communicate()[0]
+  print(stdout)
+  return stdout
+
 if __name__ == '__main__':    
    #api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
    api.run(port=8088, host='0.0.0.0')
