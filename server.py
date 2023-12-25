@@ -124,7 +124,6 @@ def get_temp():
 def get_lower_temp():
   process = subprocess.Popen(['./scripts/getmin.sh'], stdout=subprocess.PIPE)
   stdout = process.communicate()[0]
-  print(stdout)
   return stdout
 
 # API thermostat
@@ -133,7 +132,6 @@ def get_lower_temp():
 def get_higher_temp():
   process = subprocess.Popen(['./scripts/getmax.sh'], stdout=subprocess.PIPE)
   stdout = process.communicate()[0]
-  print(stdout)
   return stdout
 
 # API thermostat
@@ -142,8 +140,14 @@ def get_higher_temp():
 def get_avg_temp():
   process = subprocess.Popen(['./scripts/getavg.sh'], stdout=subprocess.PIPE)
   stdout = process.communicate()[0]
-  print(stdout)
   return stdout
+
+
+# API thermostat
+# to get all stastitics from one service (e.g. called by mobile app)
+@api.route('/statistics', methods=['GET'])
+def get_all_statistics_temp():
+  return get_lower_temp()+" "+get_higher_temp()+" "+get_avg_temp
 
 if __name__ == '__main__':    
    #api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
