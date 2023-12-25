@@ -47,7 +47,7 @@ def saveAvgTemp(ctemp):
   avg = sum / count
   
   file1 = open("tempavg", "w")  # append mode
-  file1.write(str(sum) +" "+str(count)+" "+ str(avg))
+  file1.write("{:.2f}".format(sum) +" "+"{:.2f}".format(count)+" "+ "{:.2f}".format(avg))
   file1.close()
 
 
