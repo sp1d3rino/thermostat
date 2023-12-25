@@ -147,7 +147,7 @@ def get_avg_temp():
 # to get all stastitics from one service (e.g. called by mobile app)
 @api.route('/statistics', methods=['GET'])
 def get_all_statistics_temp():
-  return get_lower_temp()+" "+get_higher_temp()+" "+get_avg_temp()
+  return str(get_lower_temp())+" "+str(get_higher_temp())+" "+str(get_avg_temp())
 
 if __name__ == '__main__':    
    #api.run(port=8088, host='0.0.0.0', ssl_context=('./certificates/server.crt', './certificates/server.key'))
