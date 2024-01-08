@@ -4,7 +4,7 @@ import datetime
 import subprocess
 
 HTTP_OK = "200";
-
+DATA_SERIE ="[{"hour":"1","temp":"N/A"},{"hour":"2","temp":"N/A"},{"hour":"3","temp":"N/A"},{"hour":"4","temp":"N/A"},{"hour":"5","temp":"N/A"},{"hour":"6","temp":"N/A"},{"hour":"7","temp":"N/A"},{"hour":"8","temp":"N/A"},{"hour":"9","temp":"N/A"},{"hour":"10","temp":"N/A"},{"hour":"11","temp":"N/A"},{"hour":"12","temp":"N/A"},{"hour":"13","temp":"N/A"},{"hour":"14","temp":"N/A"},{"hour":"15","temp":"N/A"},{"hour":"16","temp":"N/A"},{"hour":"17","temp":"N/A"},{"hour":"18","temp":"N/A"},{"hour":"19","temp":"N/A"},{"hour":"20","temp":"N/A"},{"hour":"21","temp":"N/A"},{"hour":"22","temp":"N/A"},{"hour":"23","temp":"N/A"},{"hour":"00","temp":"N/A"}]"
 api = Flask(__name__)
 
 def fwrite(filename,value):
@@ -51,6 +51,18 @@ def saveAvgTemp(ctemp):
   file1.close()
 
 
+def readDataSerie():
+  f = open("dataserie", "r")
+  if (f==''): #file not found
+    ctemp=fread("temp.txt")
+    for hour in DATA_SERIE['data']:
+        DATA_SERIE['data'][hour]['temp']=ctemp
+    return DATA_SERIE
+     
+      
+
+
+
 
 # frontend 
 # returns the index.html webpage
@@ -79,6 +91,13 @@ def set_temp():
     fwrite("temp.txt",temperature)
     saveAvgTemp(temperature)
     return fread("tstatus.txt")
+
+# API thermostat
+# get the data serie in json 
+@api.route('/status', methods=['GET'])
+def get_dataserie():
+  return readDataSerie().
+
 
 # API thermostat
 # for any endpoints that want to know 
