@@ -53,13 +53,15 @@ def saveAvgTemp(ctemp):
 
 def readDataSerie():
   f = fread("dataserie")
-  if (f==''): #file not found
+  if (f==''): #file not found initialize with current temp all hours
     jsonArray= json.loads(DATA_SERIE)
     ctemp=fread("temp.txt")
     for item in jsonArray["data"]:
         item['temp']=ctemp
+    fwrite("dataserie",json.dumps(jsonArray))
     return json.dumps(jsonArray)
-     
+  else:
+    return f
       
 
 
