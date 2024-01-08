@@ -1,6 +1,7 @@
 from flask import Flask, json, render_template, request
 import os
-from datetime import datetime
+import datetime
+from datetime import datetime as dt
 import datetime
 import subprocess
 
@@ -75,7 +76,7 @@ def updateDataSerie():
     for item in jsonArray["data"]:
         item['temp']=ctemp
   else:
-    currentDateAndTime = datetime.now()
+    currentDateAndTime = dt.now()
     for item in jsonArray["data"]:
       if item['hour']==currentDateAndTime.strftime("%H"):
           item['temp']=ctemp
