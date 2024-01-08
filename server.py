@@ -58,7 +58,7 @@ def readDataSerie():
     ctemp=fread("temp.txt")
     for item in jsonArray["data"]:
         item['temp']=ctemp
-    return jsonArray.dumps()
+    return json.dumps(jsonArray)
      
       
 
