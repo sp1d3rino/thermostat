@@ -6,7 +6,7 @@ import datetime
 import subprocess
 
 HTTP_OK = "200";
-DATA_SERIE ='{"data":[{"hour":1,"temp":"N/A"},{"hour":2,"temp":"N/A"},{"hour":3,"temp":"N/A"},{"hour":4,"temp":"N/A"},{"hour":5,"temp":"N/A"},{"hour":6,"temp":"N/A"},{"hour":7,"temp":"N/A"},{"hour":8,"temp":"N/A"},{"hour":9,"temp":"N/A"},{"hour":10,"temp":"N/A"},{"hour":11,"temp":"N/A"},{"hour":12,"temp":"N/A"},{"hour":13,"temp":"N/A"},{"hour":14,"temp":"N/A"},{"hour":15,"temp":"N/A"},{"hour":16,"temp":"N/A"},{"hour":17,"temp":"N/A"},{"hour":18,"temp":"N/A"},{"hour":19,"temp":"N/A"},{"hour":20,"temp":"N/A"},{"hour":21,"temp":"N/A"},{"hour":22,"temp":"N/A"},{"hour":23,"temp":"N/A"},{"hour":0,"temp":"N/A"}]}'
+DATA_SERIE ='{"data":[{"hour":0,"temp":"N/A"},{"hour":1,"temp":"N/A"},{"hour":2,"temp":"N/A"},{"hour":3,"temp":"N/A"},{"hour":4,"temp":"N/A"},{"hour":5,"temp":"N/A"},{"hour":6,"temp":"N/A"},{"hour":7,"temp":"N/A"},{"hour":8,"temp":"N/A"},{"hour":9,"temp":"N/A"},{"hour":10,"temp":"N/A"},{"hour":11,"temp":"N/A"},{"hour":12,"temp":"N/A"},{"hour":13,"temp":"N/A"},{"hour":14,"temp":"N/A"},{"hour":15,"temp":"N/A"},{"hour":16,"temp":"N/A"},{"hour":17,"temp":"N/A"},{"hour":18,"temp":"N/A"},{"hour":19,"temp":"N/A"},{"hour":20,"temp":"N/A"},{"hour":21,"temp":"N/A"},{"hour":22,"temp":"N/A"},{"hour":23,"temp":"N/A"}]}'
 api = Flask(__name__)
 
 def fwrite(filename,value):
