@@ -1,5 +1,6 @@
 from flask import Flask, json, render_template, request
 import os
+from datetime import datetime
 import datetime
 import subprocess
 
@@ -65,7 +66,21 @@ def readDataSerie():
       
 
 
+def updateDataSerie():
+  f = fread("dataserie")
+  jsonArray= json.loads(DATA_SERIE)
+  ctemp=fread("temp.txt")
 
+  if (f==''): #file not found initialize with current temp all hours
+    for item in jsonArray["data"]:
+        item['temp']=ctemp
+  else:
+    currentDateAndTime = datetime.now()
+    for item in jsonArray["data"]:
+      if item['hour']==currentDateAndTime.strftime("%H"):
+          item['temp']=ctemp
+
+  fwrite("dataserie",json.dumps(jsonArray))
 
 # frontend 
 # returns the index.html webpage
@@ -91,7 +106,8 @@ def set_temp():
       return("Invalid token!");
     temperature = request.json['temp']
     logTemp(temperature)
-    fwrite("temp.txt",temperature)
+    fwrite("temp.txt",temperature) # save current temp
+    updateDataSerie() #update at current hour with new current temp
     saveAvgTemp(temperature)
     return fread("tstatus.txt")
 
