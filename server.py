@@ -81,7 +81,7 @@ def updateDataSerie():
     print(currentDateAndTime.strftime("%H"))
     for item in jsonArray["data"]:
       if item['hour']==currentDateAndTime.strftime("%H"):
-          print("aggiorno!")
+          print("hour: "+ item['hour'])
           item['temp']=ctemp
 
   fwrite("dataserie",json.dumps(jsonArray))
