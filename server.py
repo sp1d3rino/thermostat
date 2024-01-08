@@ -52,7 +52,7 @@ def saveAvgTemp(ctemp):
 
 
 def readDataSerie():
-  f = open("dataserie", "r")
+  f = fread("dataserie")
   if (f==''): #file not found
     ctemp=fread("temp.txt")
     for hour in DATA_SERIE['data']:
