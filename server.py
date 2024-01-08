@@ -69,13 +69,14 @@ def readDataSerie():
 
 def updateDataSerie():
   f = fread("dataserie")
-  jsonArray= json.loads(DATA_SERIE)
   ctemp=fread("temp.txt")
 
   if (f==''): #file not found initialize with current temp all hours
+    jsonArray= json.loads(DATA_SERIE)
     for item in jsonArray["data"]:
         item['temp']=ctemp
   else:
+    jsonArray = json.loads(f)
     currentDateAndTime = dt.now()
     for item in jsonArray["data"]:
       if item['hour']==currentDateAndTime.strftime("%H"):
