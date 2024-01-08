@@ -94,7 +94,7 @@ def set_temp():
 
 # API thermostat
 # get the data serie in json 
-@api.route('/status', methods=['GET'])
+@api.route('/getserie', methods=['GET'])
 def get_dataserie():
   return readDataSerie()
 
