@@ -78,8 +78,9 @@ def updateDataSerie():
   else:
     jsonArray = json.loads(f)
     currentDateAndTime = dt.now()
+    currentHour=str(int(currentDateAndTime.strftime("%H")))
     for item in jsonArray["data"]:
-      if str(item['hour'])==currentDateAndTime.strftime("%H"):
+      if str(item['hour'])==currentHour:
           item['temp']=ctemp
 
   fwrite("dataserie",json.dumps(jsonArray))
