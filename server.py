@@ -82,7 +82,7 @@ def updateDataSerie():
     for item in jsonArray["data"]:
       if str(item['hour'])==currentHour:
           item['temp']=ctemp
-      if item['hour'] > currentHour:  #set N/A for old data(yesterday)  
+      if int(item['hour']) > int(currentDateAndTime.strftime("%H")):  #set N/A for old data(yesterday)  
         item['temp']='N/A'
   fwrite("dataserie",json.dumps(jsonArray))
 
